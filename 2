@@ -1,0 +1,38 @@
+Solution:
+
+import java.util.Arrays;
+
+public class AnagramChecker {
+
+   public static boolean areAnagrams(String str1, String str2) {
+   
+      // Convert the strings to lowercase and remove any spaces or punctuation
+      str1 = str1.toLowerCase().replaceAll("\\W", "");
+      str2 = str2.toLowerCase().replaceAll("\\W", "");
+      
+      // Check if the length of the strings is the same
+      if (str1.length() != str2.length()) {
+         return false;
+      }
+      
+      // Convert the strings to char arrays and sort them
+      char[] charArray1 = str1.toCharArray();
+      char[] charArray2 = str2.toCharArray();
+      Arrays.sort(charArray1);
+      Arrays.sort(charArray2);
+      
+      // Check if the sorted char arrays are equal
+      return Arrays.equals(charArray1, charArray2);
+   }
+   
+   public static void main(String[] args) {
+      String str1 = "Listen";
+      String str2 = "silent";
+      boolean result = areAnagrams(str1, str2);
+      System.out.println("Are " + str1 + " and " + str2 + " anagrams? " + result);
+   }
+}
+
+// Output: Are Listen and silent anagrams? true
+
+// Note: The program ignores the uppercase 'L' in str1 and compares only the lowercase letters.
